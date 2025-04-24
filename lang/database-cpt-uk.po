@@ -1,0 +1,90 @@
+# Copyright (C) 2025 Prometheus
+# This file is distributed under the MIT.
+msgid ""
+msgstr ""
+"Project-Id-Version: Database CPT 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/database-cpt\n"
+"POT-Creation-Date: 2025-04-24T19:56:48+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: database-cpt\n"
+
+#. Plugin Name of the plugin
+#: index.php
+msgid "Database CPT"
+msgstr "Database CPT"
+
+#. Author of the plugin
+#: index.php
+msgid "Prometheus"
+msgstr "Prometheus"
+
+#: inc/class-admin.php:37
+msgid "Database Details"
+msgstr "Деталі бази даних"
+
+#: inc/class-admin.php:78
+msgid "Description"
+msgstr "Опис"
+
+#: inc/class-admin.php:79
+msgid "Source Link"
+msgstr "Посилання на джерело"
+
+#: inc/class-databaseposttype.php:8
+msgctxt "post type general name"
+msgid "Databases"
+msgstr "Бази даних"
+
+#: inc/class-databaseposttype.php:9
+msgctxt "post type singular name"
+msgid "Database"
+msgstr "База даних"
+
+#: inc/class-databaseposttype.php:10
+msgctxt "admin menu"
+msgid "Databases"
+msgstr "Бази даних"
+
+#: inc/class-databaseposttype.php:11
+msgctxt "database"
+msgid "Add New"
+msgstr "Додати нову"
+
+#: inc/class-databaseposttype.php:12
+msgid "Add New Database"
+msgstr "Додати нову базу даних"
+
+#: inc/class-databaseposttype.php:13
+msgid "Edit Database"
+msgstr "Редагувати базу даних"
+
+#: inc/class-databaseposttype.php:14
+msgid "New Database"
+msgstr "Нова база даних"
+
+#: inc/class-databaseposttype.php:15
+msgid "View Database"
+msgstr "Переглянути базу даних"
+
+#: inc/class-databaseposttype.php:16
+msgid "Search Databases"
+msgstr "Шукати бази даних"
+
+#: inc/class-databaseposttype.php:17
+msgid "No databases found"
+msgstr "Бази даних не знайдено"
+
+#: inc/class-databaseposttype.php:18
+msgid "No databases found in trash"
+msgstr "У кошику немає баз даних"
+
+#: views/database-metabox.php:25
+msgid "Source Link:"
+msgstr "Посилання на джерело:"
