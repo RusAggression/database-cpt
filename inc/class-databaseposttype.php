@@ -4,6 +4,10 @@ namespace RusAggression\DatabaseCPT;
 
 final class DatabasePostType {
 	public static function register(): void {
+		if ( post_type_exists( 'database' ) ) {
+			return;
+		}
+
 		$labels = [
 			'name'               => _x( 'Databases', 'post type general name', 'database-cpt' ),
 			'singular_name'      => _x( 'Database', 'post type singular name', 'database-cpt' ),

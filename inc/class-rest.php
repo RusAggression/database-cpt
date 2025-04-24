@@ -29,10 +29,12 @@ final class REST {
 	}
 
 	public function content_callback( array $post ): string {
+		/** @psalm-var string $post['content']['raw'] */
 		return (string) apply_filters( 'the_content', $post['content']['raw'] );
 	}
 
 	public function source_link_callback( array $post ): string {
+		/** @psalm-var int $post['id'] */
 		return (string) get_post_meta( $post['id'], '_database_source_link', true );
 	}
 }
