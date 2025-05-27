@@ -47,17 +47,14 @@ final class Admin {
 		$params = [
 			'id'          => $post->ID,
 			'description' => get_post_field( 'post_content', $post->ID, 'edit' ),
-			'source_link' => (string) get_post_meta( $post->ID, '_database_source_link', true ),
+			'source_link' => sanitize_url( (string) get_post_meta( $post->ID, '_database_source_link', true ) ),
 		];
 
 		self::render( 'database-metabox', $params );
 	}
 
 	public function wp_insert_post_data( array $data ): array {
-		if ( ! isset( $_POST['database_meta_box_nonce'] ) ||
-			! is_string( $_POST['database_meta_box_nonce'] ) ||
-			! wp_verify_nonce( sanitize_text_field( $_POST['database_meta_box_nonce'] ), 'database_meta_box' )
-		) {
+		if ( ! isset( $_POST['database_meta_box_nonce'] ) || ! is_string( $_POST['database_meta_box_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( $_POST['database_meta_box_nonce'] ), 'database_meta_box' ) ) {
 			return $data;
 		}
 
@@ -73,7 +70,7 @@ final class Admin {
 			! current_user_can( 'edit_post', $post_id ) ||
 			! isset( $_POST['database_meta_box_nonce'] ) ||
 			! is_string( $_POST['database_meta_box_nonce'] ) ||
-			! wp_verify_nonce( $_POST['database_meta_box_nonce'], 'database_meta_box' )
+			! wp_verify_nonce( sanitize_text_field( $_POST['database_meta_box_nonce'] ), 'database_meta_box' )
 		) {
 			return;
 		}
@@ -82,7 +79,6 @@ final class Admin {
 			update_post_meta( $post_id, '_database_source_link', sanitize_url( $_POST['database_source_link'] ) );
 		}
 	}
-
 
 	public function manage_database_posts_columns( array $columns ): array {
 		return [
@@ -103,20 +99,18 @@ final class Admin {
 			case 'source_link':
 				$link = (string) get_post_meta( $post_id, '_database_source_link', true );
 				if ( $link ) {
-					printf( '<a href="%s" target="_blank">%s</a>', esc_url( $link ), esc_html( $link ) );
+					printf( '<a href="%s" target="_blank" rel="noreferer noopener">%s</a>', esc_url( $link ), esc_html( $link ) );
 				}
 
 				break;
 		}
 	}
 
-
 	/**
 	 * @psalm-suppress UnusedParam
 	 */
-	// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
-	private static function render( string $template, array $params = [] ): void /* NOSONAR */ {
+	private static function render( string $template, array $params = [] ): void { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
 		/** @psalm-suppress UnresolvableInclude */
-		require __DIR__ . '/../views/' . $template . '.php'; // NOSONAR
+		require __DIR__ . '/../views/' . basename( $template ) . '.php'; // NOSONAR
 	}
 }

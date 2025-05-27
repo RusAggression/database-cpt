@@ -1,41 +1,40 @@
 {
-    "name": "prometheus/database-cpt",
-    "type": "wordpress-plugin",
-    "license": "MIT",
-    "autoload": {
-        "classmap": ["inc/"]
+  "name": "prometheus/database-cpt",
+  "type": "wordpress-plugin",
+  "autoload": {
+    "classmap": [
+      "inc/"
+    ]
+  },
+  "require": {
+    "php": "^8.2.0",
+    "composer/installers": "^2.3"
+  },
+  "require-dev": {
+    "automattic/vipwpcs": "^3",
+    "johnpbloch/wordpress-core": "^6.6",
+    "php-stubs/wordpress-stubs": "^6.6",
+    "phpcompatibility/phpcompatibility-wp": "^2",
+    "psalm/plugin-phpunit": "^0.19.0",
+    "vimeo/psalm": "^5.21.1",
+    "wildwolf/wordpress-test-library-stubs": "^6.2",
+    "wp-cli/i18n-command": "^2.6",
+    "wp-phpunit/wp-phpunit": "^6.5",
+    "yoast/phpunit-polyfills": "^4.0"
+  },
+  "config": {
+    "sort-packages": true,
+    "platform": {
+      "php": "8.3"
     },
-    "require": {
-        "php": "^8.1.0",
-        "composer/installers": "^2.0"
-    },
-    "require-dev": {
-        "automattic/vipwpcs": "^3.0",
-        "johnpbloch/wordpress-core": "^6.4.2",
-        "php-stubs/wordpress-stubs": "^6.4.1",
-        "phpcompatibility/phpcompatibility-wp": "^2.1.4",
-        "phpunit/phpunit": "^9.6.16",
-        "psalm/plugin-phpunit": "^0.18.4",
-        "vimeo/psalm": "^5.20.0",
-        "wp-cli/i18n-command": "^2.5",
-        "wp-phpunit/wp-phpunit": "^6.4",
-        "yoast/phpunit-polyfills": "^2.0"
-    },
-    "config": {
-        "sort-packages": true,
-        "platform": {
-            "php": "8.1"
-        },
-        "allow-plugins": {
-            "composer/package-versions-deprecated": true,
-            "composer/installers": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        }
-    },
-    "scripts": {
-        "phpcs": "phpcs",
-        "phpcs:fix": "phpcbf",
-        "psalm": "psalm --long-progress --no-cache",
-        "test": "phpunit"
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "composer/installers": true
     }
+  },
+  "scripts": {
+    "phpcs": "phpcs",
+    "phpcbf": "phpcbf",
+    "psalm": "psalm"
+  }
 }
