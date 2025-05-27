@@ -27,7 +27,7 @@ final class Admin {
 	public function admin_init(): void {
 		add_action( 'add_meta_boxes', [ $this, 'add_meta_boxes' ] );
 		add_filter( 'wp_insert_post_data', [ $this, 'wp_insert_post_data' ] );
-		add_action( 'save_post', [ $this, 'save_post' ] );
+		add_action( 'save_post_database', [ $this, 'save_post_database' ] );
 		add_filter( 'manage_database_posts_columns', [ $this, 'manage_database_posts_columns' ] );
 		add_action( 'manage_database_posts_custom_column', [ $this, 'manage_database_posts_custom_column' ], 10, 2 );
 	}
@@ -65,7 +65,7 @@ final class Admin {
 		return $data;
 	}
 
-	public function save_post( int $post_id ): void {
+	public function save_post_database( int $post_id ): void {
 		if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) ||
 			! current_user_can( 'edit_post', $post_id ) ||
 			! isset( $_POST['database_meta_box_nonce'] ) ||
