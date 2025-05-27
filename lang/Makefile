@@ -1,26 +1,24 @@
 DOMAIN   := database-cpt
 PO_FILES := $(wildcard $(DOMAIN)-*.po)
 MO_FILES := $(patsubst %.po,%.mo,$(PO_FILES))
-
 POT      := $(DOMAIN).pot
 
-MSGFMT   := msgfmt
-MSGMERGE := msgmerge
+WP       := $(CURDIR)/../vendor/bin/wp
 
 .PHONY: all clean
 
 all: $(POT) $(MO_FILES)
 
 $(POT):
-	"$(CURDIR)/../vendor/bin/wp" i18n make-pot "$(CURDIR)/../" "$(CURDIR)/../lang/$(POT)" --domain="$(DOMAIN)"
+	"$(WP)" i18n make-pot "$(CURDIR)/../" "$(CURDIR)/../lang/$(POT)" --domain="$(DOMAIN)"
 
 $(MO_FILES): $(PO_FILES)
 
 %.mo: %.po
-	$(MSGFMT) -o$@ $<
+	"$(WP)" i18n make-mo $< $@
 
 $(PO_FILES): %: $(POT)
-	$(MSGMERGE) -U "$@" $(POT)
+	"$(WP)" i18n update-po "$(POT)"
 	touch "$@"
 
 clean:

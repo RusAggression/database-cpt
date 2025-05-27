@@ -40,7 +40,7 @@ final class Plugin {
 	}
 
 	public function plugins_loaded(): void {
-		load_plugin_textdomain( 'database-cpt', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
+		load_plugin_textdomain( 'database-cpt', false, dirname( plugin_basename( __DIR__ ) ) . '/lang' );
 	}
 
 	public function init(): void {
