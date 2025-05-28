@@ -1,5 +1,5 @@
 {
-  "name": "prometheus/database-cpt",
+  "name": "rusaggression/database-cpt",
   "type": "wordpress-plugin",
   "autoload": {
     "classmap": [
